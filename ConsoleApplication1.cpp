@@ -9,7 +9,7 @@ enum specialization { COMPUTER_SCIENCE, ELECTRICAL_ENGINEERING, MECHANICAL_ENGIN
 class student {
 public:
     student(string name, int id, double averageScore)
-        : name(name), id(id), averageScore(averageScore) {}
+        :  name(name), id(id), averageScore(averageScore) {}
     string getname() const {
         return name;
     }
@@ -52,7 +52,7 @@ public:
         specialization = spec;
     }
     int getCourse() const {
-        return course;
+            return course;
     }
     void setCourse(int crs) {
         course = crs;
@@ -62,14 +62,14 @@ public:
             return students[index];
         }
         else {
-            cout << "ïîìèëêà - iíäåêñ âèõîäèòü çà ìåæ³ ä³àïàçîíó." << endl;
+            cout << "Ð¿Ð¾Ð¼Ð¸Ð»ÐºÐ° - iÐ½Ð´ÐµÐºÑ Ð²Ð¸Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð·Ð° Ð¼ÐµÐ¶Ñ– Ð´Ñ–Ð°Ð¿Ð°Ð·Ð¾Ð½Ñƒ." << endl;
         }
     }
     void addStudent(const student& student) {
         students.push_back(student);
     }
     void mergeGroups(const Group& otherGroup) {
-        students.insert(students.end(), otherGroup.students.begin(), otherGroup.students.end());
+    students.insert(students.end(), otherGroup.students.begin(), otherGroup.students.end());
     }
     void transferStudent(int studentId, Group& otherGroup) {
         auto it = find_if(students.begin(), students.end(),
@@ -79,7 +79,7 @@ public:
             students.erase(it);
         }
         else {
-            cout << "Ïîìèëêà: Ñòóäåíòà íå çíàéäåíî." << endl;
+            cout << "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ°: Ð¡Ñ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾." << endl;
         }
     }
     void removeFailedStudents() {
@@ -88,21 +88,21 @@ public:
     }
     void removeStudentWithLowestAverageScore() {
         if (students.empty()) {
-            cout << "Ïîìëêà: Ó ãðóï³ íåìàº ñòóäåíò³â." << endl;
+            cout << "ÐŸÐ¾Ð¼Ð»ÐºÐ°: Ð£ Ð³Ñ€ÑƒÐ¿Ñ– Ð½ÐµÐ¼Ð°Ñ” ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ñ–Ð²." << endl;
             return;
         }
         auto lowestScoreStudent = min_element(students.begin(), students.end(),
             [](const student& a, const student& b) {
-                return a.getAverageScore() < b.getAverageScore();
+             return a.getAverageScore() < b.getAverageScore();
             });
         students.erase(lowestScoreStudent);
     }
     void printAllStudents() const {
-        cout << "Íàçâà ãðóïè: " << groupName << ", Ñïåö³àë³çàö³ÿ: " << specialization << ", Êóðñ: " << course
+        cout << "ÐÐ°Ð·Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð¸: " << groupName << ", Ð¡Ð¿ÐµÑ†Ñ–Ð°Ð»Ñ–Ð·Ð°Ñ†Ñ–Ñ: " << specialization << "ÐšÑƒÑ€Ñ: " << course
             << endl;
-        cout << "Ñïèñîê ñòóäåíò³â:" << endl;
+        cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ñ–Ð²:" << endl;
         for (const student& student : students) {
-            cout << "ID: " << student.getId() << ", ²ì'ÿ: " << student.getName() << ", Ñðåäí³é áàë: "
+            cout << "ID: " << student.getId() << ", Ð†Ð¼'Ñ: " << student.getName() << ", Ð¡Ñ€ÐµÐ´Ð½Ñ–Ð¹ Ð±Ð°Ð»:  "
                 << student.getAverageScore() << endl;
         }
     }
@@ -117,28 +117,28 @@ int main() {
     setlocale(LC_ALL, "");
 
     Group group1;
-    group1.setGroupName("Ãðóïà À");
+    group1.setGroupName("Ð“Ñ€ÑƒÐ¿Ð° Ð");
     group1.setSpecialization(COMPUTER_SCIENCE);
     group1.setCourse(2);
-    student student1("²âàí Ïåòðîâ", 1, 75.5);
-    student student2("Ìàð³ÿ Ñèäîðîâà", 2, 82.3);
-    student student3("âåòðî ²âàíîâ", 3, 55.0);
+    student student1("Ð†Ð²Ð°Ð½ ÐŸÐµÑ‚Ñ€Ð¾Ð²", 1, 75.5);
+     student student2("ÐœÐ°Ñ€Ñ–Ñ Ð¡Ð¸Ð´Ð¾Ñ€Ð¾Ð²Ð°", 2, 82.3);
+    student student3("ÐÐµÑ‚Ñ€Ð¾ Ð†Ð²Ð°Ð½Ð¾Ð²", 3, 55.0);
     group1.addStudent(student1);
     group1.addStudent(student2);
     group1.addStudent(student3);
-    Group group2("Ãðóïà Á", ELECTRICAL_ENGINEERING, 1);
-    cout << "Ãðóïà À:" << endl;
+    Group group2("Ð“Ñ€ÑƒÐ¿Ð° Ð‘", ELECTRICAL_ENGINEERING, 1);
+    cout << "Ð“Ñ€ÑƒÐ¿Ð° Ð:" << endl;
     group1.printAllStudents();
-    cout << "Ãðóïà á:" << endl;
+    cout << "Ð“Ñ€ÑƒÐ¿Ð° Ð±:" << endl;
     group2.printAllStudents();
     group1.mergeGroups(group2);
-    cout << "Îá'ºäíàí³ ãðóïè:" << endl;
+    cout << "ÐžÐ±'Ñ”Ð´Ð½Ð°Ð½Ñ– Ð³Ñ€ÑƒÐ¿Ð¸:" << endl;
     group1.printAllStudents();
     group1.removeFailedStudents();
-    cout << "Âèäàëåíû ñòóäåíòè, ÿê³ íå ñêëàëè ³ñïèòè:" << endl;
+    cout << "Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ñ‹ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð¸, ÑÐºÑ– Ð½Ðµ ÑÐºÐ»Ð°Ð»Ð¸ Ñ–ÑÐ¿Ð¸Ñ‚Ð¸" << endl;
     group1.printAllStudents();
      group1.removeStudentWithLowestAverageScore();
-    cout << "Âèäàëåíèé ñòóäåíò ç íàéíèæ÷èì ñåðåäí³ì áàëîì:" << endl;
+    cout << "Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ð¸Ð¹ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚ Ð· Ð½Ð°Ð¹Ð½Ð¸Ð¶Ñ‡Ð¸Ð¼ ÑÐµÑ€ÐµÐ´Ð½Ñ–Ð¼ Ð±Ð°Ð»Ð¾Ð¼:" << endl;
     group1.printAllStudents();
     return 0;
 }
